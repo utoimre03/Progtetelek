@@ -1,33 +1,41 @@
 from Szek import Szek
 
-peldany1 = Szek("kék", 3)
-peldany2 = Szek("piros", 4)
-peldany3 = Szek("zöld", 5)
+def pldListaban():
+    peldany1 = Szek("kék", 3)
+    peldany2 = Szek("piros", 4)
+    peldany3 = Szek("zöld", 5)
 
-print(peldany1.__str__())
-print(peldany2)
-print(peldany3)
+    szekek = [peldany1, peldany2, peldany3]
+    return szekek
 
-szekek = [peldany1, peldany2, peldany3]
-def labakSzama():
+def listaki(lista):
+    for index in range(0, len(lista), 1):
+        print(lista[index])
+
+# rövid verzió:
+# listaki(pldListaban())
+
+# hosszú verzió:
+# szekLista = pldListaban()
+# listaki(szekLista)
+
+def osszegzes(szekek):
     # összegzés tétele
     print("Összesen hány darab székláb van a teremben: ", end="")
     ossz = 0
     for index in range(0, len(szekek), 1):
         ossz += szekek[index].labszam
     print(f"{ossz} db")
-labakSzama()
 
-def maxLabSzin():
+def maxKivalasztas(szekek):
     # maximum kiválasztás tétele
     maxIndex = 0
     for index in range(0, len(szekek), 1):
         if szekek[index].labszam > szekek[maxIndex].labszam:
             maxIndex = index
     print(f"A legtöbb lábbal rendelkező szék színe: {szekek[maxIndex].szin}")
-maxLabSzin()
 
-def negynelTobb():
+def megszamlalas(szekek):
     # megszámlálás tétele
     print("Hány 4-nél több lábú szék van: ", end="")
     db = 0
@@ -35,9 +43,8 @@ def negynelTobb():
         if szekek[index].labszam > 4:
             db += 1
     print(f"{db} db")
-negynelTobb()
 
-def vanE():
+def eldontes(szekek):
     print("Van-e piros négy lábú szék: ", end="")
     # eldöntés tétele
     vanE = False
@@ -49,4 +56,10 @@ def vanE():
         print("van")
     else:
         print("nincs")
-vanE()
+
+szekLista = pldListaban()
+listaki(szekLista)
+osszegzes(szekLista)
+maxKivalasztas(szekLista)
+megszamlalas(szekLista)
+eldontes(szekLista)
